@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 
 export default function Card() {
   const [gifs, setGifs] = useState([]);
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [previousGifIds, setPreviousGifIds] = useState([]);
 
   useEffect(() => {
     async function getGifs() {
@@ -25,16 +28,36 @@ export default function Card() {
     getGifs();
   }, []);
 
+  function handleClick(gifId) {
+    if (!previousGifIds.includes(gifId)) {
+      setScore(score + 1);
+      setPreviousGifIds([...previousGifIds, gifId]);
+      // Update bestScore and reset score and previousGifIds if a gif is clicked twice in succession
+    } else {
+      if (score > bestScore) {
+        setBestScore(score);
+      }
+      setScore(0);
+      setPreviousGifIds([]);
+    }
+  }
+
   return (
-    <section>
-      {console.log(gifs[0])}
-      {gifs.map((gif) => {
-        <article key={gif.title}>
-          <img src={gif.images.fixed_height.webp} alt={gif.title} />
-          <p>{gif.title}</p>
-        </article>;
-      })}
-      {/* <p>{gifs[0].title}</p> */}
-    </section>
+    <>
+      <section>
+        <p>Score: {score}</p>
+        <p>Best Score: {bestScore}</p>
+      </section>
+      <section>
+        {gifs.map((gif) => {
+          return (
+            <article key={gif.id} onClick={() => handleClick(gif.id)}>
+              <img src={gif.images.fixed_height.webp} alt={gif.title} />
+              <p>{gif.title}</p>
+            </article>
+          );
+        })}
+      </section>
+    </>
   );
 }
