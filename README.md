@@ -1,12 +1,22 @@
-# React + Vite
+# Memory Cards
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Memory Cards is a card game that tests how much you can remember. You click on a card to increase your score. You have to remember every card you have clicked on in each round. Clicking any card twice in a round resets the game. Your best score across rounds is preserved to give you an idea of how good (or bad) your memory is.
 
-Currently, two official plugins are available:
+See the [live demo](https://nzubeifechukwu-memory-cards.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tools/Languages
 
-## Expanding the ESLint configuration
+- React
+- CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Inspiration
+
+This [Memory Cards game](https://www.theodinproject.com/lessons/node-path-react-new-memory-card) is part of [The Odin Project](https://www.theodinproject.com/)'s Full-Stack Web Development (JavaScript) path.
+
+## Credit
+
+I got the gifs used for this project from the [Giphy](https://giphy.com/) API.
+
+## Contact
+
+You can reach me on [X](https://x.com/NzubeIfechukwu) or [LinkedIn](https://x.com/NzubeIfechukwu).
