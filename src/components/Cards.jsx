@@ -56,18 +56,42 @@ export default function Cards() {
 
   return (
     <>
-      <section>
-        <p>Score: {score}</p>
-        <p>Best Score: {bestScore}</p>
-      </section>
-      <section className="cards">
+      <header>
+        <h1>Memory Cards</h1>
+        <h2>Let's see how much you can remember</h2>
+        <p>
+          Click on a card to increase your score.
+          <br />
+          You must remember all cards you've clicked on in each round.
+          <br />
+          Clicking any card twice in each round resets your <b>score</b> and
+          updates your <b>best score</b>.
+          <br />
+          <b>LET'S PLAY!!!</b>
+        </p>
+        <section className="scores">
+          <h3>Score: {score}</h3>
+          <h3>Best Score: {bestScore}</h3>
+        </section>
+      </header>
+      <main className="cards">
         {gifs.map((gif) => (
           <article key={gif.id} onClick={() => handleClick(gif.id)}>
             <img src={gif.images.fixed_height.webp} alt={gif.title} />
             <p>{gif.title}</p>
           </article>
         ))}
-      </section>
+      </main>
+      <footer>
+        <small>
+          <a
+            href="https://github.com/nzubeifechukwu/memory-game"
+            target="_blank"
+          >
+            Built by Nzube Ifechukwu
+          </a>
+        </small>
+      </footer>
     </>
   );
 }
