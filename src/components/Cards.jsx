@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Card() {
+export default function Cards() {
   const [gifs, setGifs] = useState([]);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
@@ -18,7 +18,6 @@ export default function Card() {
         }
 
         const result = await response.json();
-        console.log(result.data);
         setGifs(result.data);
       } catch (error) {
         console.error(error.message);
@@ -40,6 +39,19 @@ export default function Card() {
       setScore(0);
       setPreviousGifIds([]);
     }
+    // shuffle gifs once any gif is clicked
+    setGifs(shuffleGifs(gifs));
+  }
+
+  function shuffleGifs(gifsArray) {
+    // Loop from last element back to second element
+    for (let i = gifsArray.length - 1; i > 0; i--) {
+      // generate a random index `j` between 0 and `i` (inclusive)
+      const j = Math.floor(Math.random() * (i + 1));
+      // Swap elements at indices `i` and `j`
+      [gifsArray[i], gifsArray[j]] = [gifsArray[j], gifsArray[i]];
+    }
+    return gifsArray;
   }
 
   return (
@@ -48,15 +60,13 @@ export default function Card() {
         <p>Score: {score}</p>
         <p>Best Score: {bestScore}</p>
       </section>
-      <section>
-        {gifs.map((gif) => {
-          return (
-            <article key={gif.id} onClick={() => handleClick(gif.id)}>
-              <img src={gif.images.fixed_height.webp} alt={gif.title} />
-              <p>{gif.title}</p>
-            </article>
-          );
-        })}
+      <section className="cards">
+        {gifs.map((gif) => (
+          <article key={gif.id} onClick={() => handleClick(gif.id)}>
+            <img src={gif.images.fixed_height.webp} alt={gif.title} />
+            <p>{gif.title}</p>
+          </article>
+        ))}
       </section>
     </>
   );
